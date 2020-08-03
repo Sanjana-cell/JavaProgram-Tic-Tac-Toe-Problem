@@ -10,14 +10,16 @@ import java.util.Scanner;
 public class GameSimulator {
 	
 	String[][] board = new String[3][3];
-	static Random random = new Random();
-	static boolean toss;
-	static boolean choiceLetter;
-	static Scanner in = new Scanner(System.in);
-	static String playerInput;
-	static String computerInput;
+	private static Scanner in;
 	
 	public static void main(String[] args) {
+		Random random = new Random();
+		boolean toss;
+		boolean choiceLetter;
+		in = new Scanner(System.in);
+		String playerInput;
+		String computerInput;
+		
 		toss=random.nextBoolean();
 		
 		if(toss == true) {
