@@ -12,7 +12,22 @@ public class GameSimulator {
 	String[][] board = new String[3][3];
 	private static Scanner in;
 	
+	/*
+	  Function Displays the tic tac toe board
+	 */
+	public void displayBoard() {
+		System.out.println("Tic Tac Toe Board");
+		for(int i=0; i<board.length; i++) {
+			for(int j=0; j<board[i].length; j++) {
+				System.out.print(board[i][j]+" ");
+			}
+			System.out.println(" ");
+		}
+		
+	}
+	
 	public static void main(String[] args) {
+		GameSimulator game = new GameSimulator();
 		Random random = new Random();
 		boolean toss;
 		boolean choiceLetter;
@@ -28,8 +43,10 @@ public class GameSimulator {
 			System.out.println("Choose Letter X OR O");
 			playerInput=in.next();
 			
-			if( playerInput.equals("X") || playerInput.equals("O")) 
+			if( playerInput.equals("X") || playerInput.equals("O")) { 
 				System.out.println("Player's choice "+playerInput);
+				game.displayBoard();
+			}
 			else
 				System.out.println("Invalid input choose X or O");
 		}
@@ -42,7 +59,7 @@ public class GameSimulator {
 			else
 				computerInput="O";
 			
-			System.out.println("Computer is choice "+computerInput);
+			System.out.println("Computer's choice "+computerInput);
 		}
 	}
 
