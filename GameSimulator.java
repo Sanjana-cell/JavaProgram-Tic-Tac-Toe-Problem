@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,14 +30,14 @@ public class GameSimulator {
 		game.displayBoard(); //function call to display board
 		System.out.println("Enter a slot number to place"+ playerInput+ "in:");
 		
-		//loop until win is null 
+		//loops till win is null 
 		while (win == null) {
 			int input;
-				input = in.nextInt();
-				if (!(input > 0 && input <= 9)) {
-					System.out.println("Invalid input; enter slot number:");
-					continue;
-				}
+			input = in.nextInt();
+			if (!(input > 0 && input <= 9)) {
+				System.out.println("Invalid input; enter slot number:");
+				continue;
+			}
 			if (board[input-1].equals(String.valueOf(input))) {
 				board[input-1] = playerInput;
 				game.displayBoard(); // function call to display board
@@ -49,7 +47,7 @@ public class GameSimulator {
 				continue;
 			}
 		}
-			System.out.println("Congratulations! You have won!");		
+		System.out.println("Congratulations! You have won!");		
 	}
 	
 	/*
@@ -141,6 +139,4 @@ public class GameSimulator {
 		System.out.println("enter a slot number to place ");
 		return null;
 	}
-
-
 }
