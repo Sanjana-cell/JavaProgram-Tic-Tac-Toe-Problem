@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,6 +17,8 @@ public class GameSimulator {
 	static boolean toss;
 	static boolean choiceLetter;
 	static Random random = new Random();
+	static int input;
+	static String turn=null;
 	
 	public static void main(String[] args) {
 		GameSimulator game = new GameSimulator();
@@ -23,32 +26,51 @@ public class GameSimulator {
 		
 		game.createEmptyBoard(); //function call to reset the board
 		chooseLetter();
-		String win = null;
+		turn=game.chooseTurn();
 		
+		String win = null;
 		System.out.println("Welcome to Tic Tac Toe Game");
 		System.out.println("--------------------------------");
+		
 		game.displayBoard(); //function call to display board
-		System.out.println("Enter a slot number to place"+ playerInput+ "in:");
 		
 		//loops till win is null 
 		while (win == null) {
-			int input;
-			input = in.nextInt();
-			if (!(input > 0 && input <= 9)) {
-				System.out.println("Invalid input; enter slot number:");
-				continue;
+			if(turn.equals(playerInput)) {
+				System.out.println("Enter a slot number to place "+ playerInput+ " in:");
+				input = in.nextInt();
+				if (!(input > 0 && input <= 9)) {
+					System.out.println("Invalid input; enter slot number:");
+					continue;
+				}
+			}
+			else {
+				System.out.println("Computer's turn");
+				input=random.nextInt(10-1)+1;
+				System.out.println("Computer's input "+input);
 			}
 			if (board[input-1].equals(String.valueOf(input))) {
-				board[input-1] = playerInput;
+				board[input-1] = turn;
 				game.displayBoard(); // function call to display board
 				win = game.winnerCheck(); // function call to check the winner
+				if (turn.equals(playerInput)) {
+					turn = computerInput;
+				} else {
+					turn = playerInput;
+				}
+				
 			} else {
 				System.out.println("Slot already taken; enter slot number:");
-				continue;
 			}
 		}
-		System.out.println("Congratulations! You have won!");		
+		if (win.equalsIgnoreCase("draw")) {
+			System.out.println("It's a draw! Thanks for playing.");
+		} else {
+			String winner=(win.equals(playerInput)) ? "Player" : "Computer";
+			System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+		}
 	}
+		
 	
 	/*
 	 * Function to choose the letter
@@ -95,7 +117,17 @@ public class GameSimulator {
 			board[i] = String.valueOf(i+1);
 		}
 	}
-	
+	String chooseTurn() {
+		boolean toss=random.nextBoolean();
+		if(toss == true) {
+			System.out.println("Player turn");
+			return playerInput;
+		}
+		else
+			System.out.println("Computer turn");
+			System.out.println(computerInput);
+			return computerInput;
+	}
 	/*
 	 * Function to Check the winner
 	 */
@@ -136,7 +168,12 @@ public class GameSimulator {
 				return "O";
 			} 
 		}
-		System.out.println("enter a slot number to place ");
+		for (int i = 0; i < 9; i++) {
+			if (Arrays.asList(board).contains(String.valueOf(i+1))) {
+				break;
+			}
+			else if (i == 8) return "draw";
+		}
 		return null;
 	}
 }
