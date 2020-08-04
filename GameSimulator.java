@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author Sanjana K R
- * Date: 8-2-2020
+ * Date: 2-8-2020
  * Compilation Command: javac GameSimulator.java
  * Execution Command: java GameSimulator
  */
@@ -46,7 +46,10 @@ public class GameSimulator {
 			}
 			else {
 				System.out.println("Computer's turn");
-				input=random.nextInt(10-1)+1;
+				input=ComputerMoves.checkPosition(board,computerInput);
+				if(input == 0) {
+					input=random.nextInt(10-1)+1;
+				}
 				System.out.println("Computer's input "+input);
 			}
 			if (board[input-1].equals(String.valueOf(input))) {
