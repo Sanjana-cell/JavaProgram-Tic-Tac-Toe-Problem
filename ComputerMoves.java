@@ -63,6 +63,5 @@ static int checkPosition(String board[], String userInput) {
 			
 		}	
 		return input;
-
-}
+	}
 }
