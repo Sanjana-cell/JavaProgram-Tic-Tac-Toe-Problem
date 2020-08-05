@@ -34,28 +34,28 @@ static int checkPosition(String board[], String userInput) {
 			
 			switch (i) {
 			case 0:
-				position = generatesPosition(board, userInput, 0, 1,2);
+				position = generatesPosition(board, userInput, 0, 1,2); //row wise winning or blocking position
 				break;
 			case 1:
-				position = generatesPosition(board, userInput, 3, 4,5);
+				position = generatesPosition(board, userInput, 3, 4,5); //row wise winning or blocking position
 				break;
 			case 2:
-				position = generatesPosition(board, userInput, 6, 7, 8);
+				position = generatesPosition(board, userInput, 6, 7, 8); //row wise winning or blocking position
 				break;
 			case 3:
-				position = generatesPosition(board, userInput, 0, 3, 6);
+				position = generatesPosition(board, userInput, 0, 3, 6); //Column wise winning or blocking position
 				break;
 			case 4:
-				position = generatesPosition(board, userInput, 1, 4, 7);
+				position = generatesPosition(board, userInput, 1, 4, 7); //Column wise winning or blocking position
 				break;
 			case 5:
-				position = generatesPosition(board, userInput, 2, 5, 8);
+				position = generatesPosition(board, userInput, 2, 5, 8); //Column wise winning or blocking position
 				break;
 			case 6:
-				position = generatesPosition(board, userInput, 0, 4, 8);
+				position = generatesPosition(board, userInput, 0, 4, 8); //diagonal wise winning or blocking position
 				break;
 			case 7:
-				position = generatesPosition(board, userInput, 2, 4, 6);
+				position = generatesPosition(board, userInput, 2, 4, 6); //diagonal wise winning or blocking position
 				break;
 			}
 			 if (position != 0)
