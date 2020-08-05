@@ -124,7 +124,8 @@ static int checkPosition(String board[], String userInput) {
 					return position;
 			else if (result.equals("OO") && b.equals(userInput) && board[position-1].equals(String.valueOf(position))) 
 					return position;
-		}
+			
+		}	
 		return input;
 
 }

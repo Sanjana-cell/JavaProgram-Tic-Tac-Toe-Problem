@@ -49,8 +49,9 @@ public class GameSimulator {
 				System.out.println("Computer's turn");
 				computerWinPosition=ComputerMoves.checkPosition(board,computerInput);
 				playerWinPosition=ComputerMoves.checkPosition(board, playerInput);
+				
 				if(computerWinPosition == 0 && playerWinPosition == 0) {
-					input=random.nextInt(10-1)+1;
+					input=game.cornerPosition();
 				}
 				else if(computerWinPosition != 0) {
 					input=computerWinPosition;
@@ -140,6 +141,22 @@ public class GameSimulator {
 			System.out.println("Computer turn");
 			System.out.println(computerInput);
 			return computerInput;
+	}
+	
+	int cornerPosition() {
+		int position;
+	if (board[0].equals(String.valueOf(1)))
+			return 1;
+	else if(board[2].equals(String.valueOf(3))) 
+			return 3;
+	else if(board[6].equals(String.valueOf(7)))
+			return 7;
+	else if(board[8].equals(String.valueOf(9)))
+			return 9;
+	else
+		position=random.nextInt(10-1)+1;
+	return position;
+		
 	}
 	/*
 	 * Function to Check the winner
