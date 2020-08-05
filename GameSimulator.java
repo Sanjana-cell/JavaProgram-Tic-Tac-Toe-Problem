@@ -82,10 +82,10 @@ public class GameSimulator {
 			}
 		}
 		if (win.equalsIgnoreCase("draw")) {
-			System.out.println("It's a draw! Thanks for playing.");
+			System.out.println("It's a draw!");
 		} else {
 			String winner=(win.equals(playerInput)) ? "Player" : "Computer";
-			System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+			System.out.println("Congratulations! " + winner + " has won! ");
 		}
 	}
 		
@@ -164,6 +164,10 @@ public class GameSimulator {
 				return 9;
 		else if(board[4].equals(String.valueOf(5)))
 				return 5;
+		else if(board[3].equals(String.valueOf(4)))
+				return 4;
+		else if(board[5].equals(String.valueOf(6)))
+				return 6;
 		else
 			return random.nextInt(10-1)+1;
 		
