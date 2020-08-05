@@ -20,7 +20,7 @@ static int checkPosition(String board[], String userInput) {
 		int position=0;
 		String result = null;
 		int input = 0;
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 23; i++) {
 			
 			switch (i) {
 			case 0:
