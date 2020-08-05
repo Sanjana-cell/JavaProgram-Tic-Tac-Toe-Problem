@@ -47,18 +47,22 @@ public class GameSimulator {
 			}
 			else {
 				System.out.println("Computer's turn");
-				computerWinPosition=ComputerMoves.checkPosition(board,computerInput);
-				playerWinPosition=ComputerMoves.checkPosition(board, playerInput);
+				computerWinPosition = ComputerMoves.checkPosition(board, computerInput);
+				playerWinPosition = ComputerMoves.checkPosition(board, playerInput);
 				
 				if(computerWinPosition == 0 && playerWinPosition == 0) {
-					input=game.cornerPosition();
+					input = game.checkOtherPosition();
+					System.out.println(input);
 				}
+				
 				else if(computerWinPosition != 0) {
-					input=computerWinPosition;
+					input = computerWinPosition;
 				}
+				
 				else if(playerWinPosition != 0) {
-					input=playerWinPosition;
+					input = playerWinPosition;
 				}
+				
 				System.out.println("Computer's input "+input);
 			}
 			if (board[input-1].equals(String.valueOf(input))) {
@@ -85,7 +89,6 @@ public class GameSimulator {
 		}
 	}
 		
-	
 	/*
 	 * Function to choose the letter
 	 */
@@ -99,9 +102,9 @@ public class GameSimulator {
 			
 			choiceLetter=random.nextBoolean();
 			if(choiceLetter == true && playerInput.equals("O")) 
-				computerInput="X";
+				computerInput = "X";
 			else
-				computerInput="O";
+				computerInput = "O";
 				break;
 		}
 		
@@ -131,6 +134,10 @@ public class GameSimulator {
 			board[i] = String.valueOf(i+1);
 		}
 	}
+	
+	/*
+	 * Function to choose who plays first
+	 */
 	String chooseTurn() {
 		boolean toss=random.nextBoolean();
 		if(toss == true) {
@@ -143,25 +150,28 @@ public class GameSimulator {
 			return computerInput;
 	}
 	
-	int cornerPosition() {
-		int position;
-	if (board[0].equals(String.valueOf(1)))
-			return 1;
-	else if(board[2].equals(String.valueOf(3))) 
-			return 3;
-	else if(board[6].equals(String.valueOf(7)))
-			return 7;
-	else if(board[8].equals(String.valueOf(9)))
-			return 9;
-	else
-		position=random.nextInt(10-1)+1;
-	return position;
+	/*
+	 * Function to get corner position or center position
+	 */
+	int checkOtherPosition() {
+		if (board[0].equals(String.valueOf(1)))
+				return 1;
+		else if(board[2].equals(String.valueOf(3))) 
+				return 3;
+		else if(board[6].equals(String.valueOf(7)))
+				return 7;
+		else if(board[8].equals(String.valueOf(9)))
+				return 9;
+		else if(board[4].equals(String.valueOf(5)))
+				return 5;
+		else
+			return random.nextInt(10-1)+1;
 		
 	}
+	
 	/*
 	 * Function to Check the winner
 	 */
-	
 	String winnerCheck() {
 		
 		for (int i = 0; i < 8; i++) {
