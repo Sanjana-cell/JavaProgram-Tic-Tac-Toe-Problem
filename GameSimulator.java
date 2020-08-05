@@ -3,8 +3,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * @author Sanjana K R Date: 2-8-2020 Compilation Command: javac
- *         GameSimulator.java Execution Command: java GameSimulator
+ * @author Sanjana K R Date: 2-8-2020
+ * Compilation Command: javac
+ *  GameSimulator.java Execution Command: java GameSimulator
  */
 public class GameSimulator {
 
