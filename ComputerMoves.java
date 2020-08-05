@@ -8,16 +8,18 @@ import java.util.Random;
  */
 
 public class ComputerMoves {
-	static int position;
 	static Random random=new Random();
-	static String result = null;
-	static int input;
+	
 	
 /*
  * Function checks for winning position
  */
-static int checkPosition(String board[], String Computerinput) {
-		
+static int checkPosition(String board[], String userInput) {
+		String a="X";
+		String b="O";
+		int position=0;
+		String result = null;
+		int input = 0;
 		for (int i = 0; i < 20; i++) {
 			
 			switch (i) {
@@ -118,10 +120,10 @@ static int checkPosition(String board[], String Computerinput) {
 				position=6;
 				break;
 			}
-			if (result.equals("XX") && result.contains(Computerinput) && board[position-1].equals(String.valueOf(position))) {
-					input=position;
-			} else if (result.equals("OO") && result.contains(Computerinput) && board[position-1].equals(String.valueOf(position))) 
-					input=position;
+			if (result.equals("XX") && a.equals(userInput) && board[position-1].equals(String.valueOf(position))) 
+					return position;
+			else if (result.equals("OO") && b.equals(userInput) && board[position-1].equals(String.valueOf(position))) 
+					return position;
 		}
 		return input;
 

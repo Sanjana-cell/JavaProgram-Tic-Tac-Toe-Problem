@@ -23,7 +23,8 @@ public class GameSimulator {
 	public static void main(String[] args) {
 		GameSimulator game = new GameSimulator();
 		in = new Scanner(System.in);
-		
+		int computerWinPosition;
+		int playerWinPosition=0;
 		game.createEmptyBoard(); //function call to reset the board
 		chooseLetter();
 		turn=game.chooseTurn();
@@ -46,9 +47,16 @@ public class GameSimulator {
 			}
 			else {
 				System.out.println("Computer's turn");
-				input=ComputerMoves.checkPosition(board,computerInput);
-				if(input == 0) {
+				computerWinPosition=ComputerMoves.checkPosition(board,computerInput);
+				playerWinPosition=ComputerMoves.checkPosition(board, playerInput);
+				if(computerWinPosition == 0 && playerWinPosition == 0) {
 					input=random.nextInt(10-1)+1;
+				}
+				else if(computerWinPosition != 0) {
+					input=computerWinPosition;
+				}
+				else if(playerWinPosition != 0) {
+					input=playerWinPosition;
 				}
 				System.out.println("Computer's input "+input);
 			}
@@ -64,6 +72,8 @@ public class GameSimulator {
 				
 			} else {
 				System.out.println("Slot already taken; enter slot number:");
+				if(turn.equals(computerInput))
+					input=random.nextInt(10-1)+1;
 			}
 		}
 		if (win.equalsIgnoreCase("draw")) {
